@@ -7,15 +7,16 @@ math.randomseed(os.time())
 local DEBUG = 0
 
 local FLOWERS = {
-	"rose",
-	"dandelion_yellow",
-	"dandelion_white",
-	"tulip",
-	"viola",
+	"red",
+	"yellow",
+	"white",
+	"orange",
+	"violet",
+	"cotton",
 }
 
 local MAX_RATIO = 2000
-local GROWING_DELAY = 3600
+local GROWING_DELAY = 7200
 
 -- Local Functions
 local dbg = function(s)
@@ -121,6 +122,12 @@ minetest.register_craftitem('flowers:flower_pot', {
 	material = minetest.digprop_constanttime(0.5),
 })
 
+minetest.register_craftitem('flowers:cotton', {
+	image = 'cotton.png',
+    furnace_burntime = 15;
+    on_place_on_ground = minetest.craftitem_place_item,
+})
+
 for _, color in ipairs(FLOWERS) do
 	local fname = 'flower_' .. color
 	local pname = fname .. '_pot'
@@ -151,7 +158,7 @@ for _, color in ipairs(FLOWERS) do
 	local pname = fname .. '_pot'
 
 	minetest.register_craft({
-		output = 'CraftItem "' .. pname .. '" 1',
+		output = 'CraftItem "' .. pname .. '" 9',
 		recipe = {
 			{'NodeItem "' .. fname .. '" 1'},
 			{'CraftItem "flowers:flower_pot" 1'},
@@ -159,20 +166,33 @@ for _, color in ipairs(FLOWERS) do
 	})
 end
 
+minetest.register_craft({
+	output = 'CraftItem "flowers:cotton" 1',
+	recipe = {
+		{'NodeItem "flowers:flower_cotton" 1'},
+	}
+})
+
 -- Make it grow !
 grow_blocks_on_surfaces(GROWING_DELAY * 2, {
-	"flowers:flower_rose",
-	"flowers:flower_dandelion_white",
-	"flowers:flower_viola",
+	"flowers:flower_red",
+	"flowers:flower_white",
+	"flowers:flower_violet",
 	}, {
 	{name = "dirt_with_grass", chance = 4, spacing = 15},
 })
 
 grow_blocks_on_surfaces(GROWING_DELAY, {
-	"flowers:flower_dandelion_yellow",
-	"flowers:flower_tulip",
+	"flowers:flower_yellow",
+	"flowers:flower_orange",
 	}, {
 	{name = "dirt_with_grass", chance = 2, spacing = 10},
+})
+
+grow_blocks_on_surfaces(GROWING_DELAY*2, {
+	"flowers:flower_cotton",
+	}, {
+	{name = "dirt_with_grass", chance = 5, spacing = 7},
 })
 
 grow_blocks_on_surfaces(GROWING_DELAY / 2, {
