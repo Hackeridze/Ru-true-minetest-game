@@ -89,7 +89,7 @@ for _, color in ipairs(FLOWERS) do
 
 	minetest.register_node('flowers:' .. fname, {
 		drawtype = 'plantlike',
-		visual_scale = 1.0,
+		visual_scale = FLOWERS_VISUAL_SCALE,
 		tile_images = { fname .. '.png' },
 		inventory_image = fname .. '.png',
 		sunlight_propagates = true,
@@ -97,6 +97,10 @@ for _, color in ipairs(FLOWERS) do
 		walkable = false,
 		material = minetest.digprop_constanttime(0.0),
 		furnace_burntime = 1,
+        selection_box = {
+    		type = "fixed",
+    		fixed = {-1/5-0.1, -1/2, -1/5-0.1, 1/5+0.1, 1/5+0.1, 1/5+0.1},
+    	},
 	})
 end
 
@@ -108,6 +112,10 @@ minetest.register_node('flowers:flower_waterlily', {
 	paramtype = 'light',
 	walkable = false,
 	material = minetest.digprop_constanttime(0.0),
+        selection_box = {
+    		type = "fixed",
+    		fixed = {-1/2, -1/2, -1/2, 1/2, -0.52, 1/2},
+    	},
 })
 
 -- Items
