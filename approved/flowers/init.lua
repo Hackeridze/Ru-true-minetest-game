@@ -75,6 +75,7 @@ for _, color in ipairs(FLOWERS) do
 	local fname = 'flower_' .. color
 
 	minetest.register_node('flowers:' .. fname, {
+		description = "Flower: " .. color,
 		drawtype = 'plantlike',
 		visual_scale = FLOWERS_VISUAL_SCALE,
 		tile_images = { fname .. '.png' },
@@ -92,6 +93,7 @@ for _, color in ipairs(FLOWERS) do
 end
 
 minetest.register_node('flowers:flower_waterlily', {
+	description = "Flower: waterlily",
 	drawtype = 'raillike',
 	tile_images = { 'flower_waterlily.png', },
 	inventory_image = 'flower_waterlily.png',
@@ -107,6 +109,7 @@ minetest.register_node('flowers:flower_waterlily', {
 
 -- Items
 minetest.register_craftitem('flowers:flower_pot', {
+	description = "Flower pot",
 	drawtype = 'plantlike',
 	image = 'flower_pot.png',
 	stack_max = 1,
@@ -118,6 +121,7 @@ minetest.register_craftitem('flowers:flower_pot', {
 })
 
 minetest.register_craftitem('flowers:cotton', {
+		description = "Cotton",
 	image = 'cotton.png',
     furnace_burntime = 15;
     on_place_on_ground = minetest.craftitem_place_item,
@@ -128,6 +132,7 @@ for _, color in ipairs(FLOWERS) do
 	local pname = fname .. '_pot'
 
 	minetest.register_craftitem('flowers:' .. pname, {
+		description = "Flower pot: " .. color,
 		drawtype = 'plantlike',
 		image = pname .. '.png',
 		stack_max = 1,
