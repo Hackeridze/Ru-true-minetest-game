@@ -16,13 +16,6 @@ local FLOWERS = {
 local MAX_RATIO = 2000
 local GROWING_DELAY = 7200
 
--- Local Functions
-local dbg = function(s)
-	if DEBUG == 1 then
-		print('[FLOWERS] ' .. s)
-	end
-end
-
 local table_contains = function(t, v)
 	for _, i in ipairs(t) do
 		if (i == v) then
@@ -69,10 +62,6 @@ local grow_blocks_on_surfaces = function(growdelay, grownames, surfaces)
 					local flower_in_range = is_node_in_cube(grownames, p_top, surface.spacing)
 					if (n_top.name == "air") and (flower_in_range == false) then
 						local nnode = grownames[math.random(1, #grownames)]
-						dbg('Adding node ' .. nnode .. ' ('
-							.. pos.x .. ', '
-							.. pos.y .. ', '
-							.. pos.z .. ')')
 						minetest.env:add_node(p_top, { name = nnode })
 					end
 				end
