@@ -189,10 +189,10 @@ grow_blocks_on_surfaces(GROWING_DELAY, {
 	{name = "dirt_with_grass", chance = 2, spacing = 10},
 })
 
-grow_blocks_on_surfaces(GROWING_DELAY*5, {
+grow_blocks_on_surfaces(GROWING_DELAY*3, {
 	"flowers:flower_cotton",
 	}, {
-	{name = "dirt_with_grass", chance = 5, spacing = 7},
+	{name = "dirt_with_grass", chance = 3, spacing = 7},
 })
 
 grow_blocks_on_surfaces(GROWING_DELAY / 2, {
