@@ -1,6 +1,6 @@
 
 
-addore = function(modName,oreName,oreDescription,
+addore = function(oreName,oreDescription,
 				oreTexture,oreMaterial,
 				maxAmountForChunk,
 				rarity,size,
@@ -8,10 +8,10 @@ addore = function(modName,oreName,oreDescription,
 				dropShitName,dropShitDescription,
 				dropShitTexture,dropShitAmount)
 
-local ore = modName .. ':' .. oreName
-local shit = modName .. ':' .. dropShitName
+local ore = "addore:" .. oreName
+local shit = "addore:" .. dropShitName
 
-if dropShit = -1 then
+if dropShit == -1 then
 	minetest.register_node(ore, {
 		description = oreDescription,
 		tile_images = {oreTexture},
@@ -42,7 +42,7 @@ else
 end
 
 local gen = function(minp,maxp)
-    if math.random(1,rarity) != 1 then return; end
+    if math.random(1,rarity) ~= 1 then return; end
 
 	if  minp.y < minY or maxp.y > maxY then return; end
     
@@ -72,7 +72,7 @@ minetest.register_on_generated(gen)
 end
 
 
-addOre("ololo","check_ore","BAD ORE",
+addore("check_ore","BAD ORE",
 				"check_ore.png",minetest.digprop_stonelike(1.4),
 				50,
 				1,{
