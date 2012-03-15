@@ -174,7 +174,7 @@ addSMrecipe("orange","red","yellow")
 minetest.register_craft({
 	output = "dye:orange 1",
 	recipe = {
-			{"flowers:tulip"},
+			{"flowers:flower_tulip"},
 	}
 })
 addSMrecipe("cyan","green","blue")
@@ -182,7 +182,7 @@ addSMrecipe("purple","red","blue")
 minetest.register_craft({
 	output = "dye:purple 1",
 	recipe = {
-			{"flowers:viola"},
+			{"flowers:flower_viola"},
 	}
 })
 addSMrecipe("gray","black","white")
@@ -199,21 +199,21 @@ minetest.register_craft({
     type = "shapeless",
 	output = "dye:red 1",
 	recipe = {
-			"flowers:rose",
+			"flowers:flower_rose",
 	}
 })
 minetest.register_craft({
     type = "shapeless",
 	output = "dye:white 1",
 	recipe = {
-			"flowers:dandelion_white",
+			"flowers:flower_dandelion_white",
 	}
 })
 minetest.register_craft({
     type = "shapeless",
 	output = "dye:yellow 1",
 	recipe = {
-			"flowers:dandelion_yellow",
+			"flowers:flower_dandelion_yellow",
 	}
 })
 minetest.register_craft({
