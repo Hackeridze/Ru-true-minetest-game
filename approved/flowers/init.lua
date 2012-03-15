@@ -5,11 +5,11 @@
 local DEBUG = 0
 
 local FLOWERS = {
-	"red",
-	"yellow",
-	"white",
-	"orange",
-	"violet",
+	"rose",
+	"dandelion_yellow",
+	"dandelion_white",
+	"tulip",
+	"viola",
 	"cotton",
 }
 
@@ -175,16 +175,16 @@ minetest.register_craft({
 
 -- Make it grow !
 grow_blocks_on_surfaces(GROWING_DELAY * 2, {
-	"flowers:flower_red",
-	"flowers:flower_white",
-	"flowers:flower_violet",
+	"flowers:flower_rose",
+	"flowers:flower_dandelion_white",
+	"flowers:flower_viola",
 	}, {
 	{name = "dirt_with_grass", chance = 4, spacing = 15},
 })
 
 grow_blocks_on_surfaces(GROWING_DELAY, {
-	"flowers:flower_yellow",
-	"flowers:flower_orange",
+	"flowers:flower_dandelion_yellow",
+	"flowers:flower_tulip",
 	}, {
 	{name = "dirt_with_grass", chance = 2, spacing = 10},
 })
