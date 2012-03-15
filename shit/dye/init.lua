@@ -107,128 +107,134 @@ minetest.register_craftitem("dye:brown", {
 --Dye recipes
 local addSMrecipe = function(new, first, second) 
 	minetest.register_craft({
-		output = 'dye:' .. new ..' 2',
+		output = "dye:" .. new .." 2",
 		recipe = {
-				{'dye:'.. first, 'dye:' .. second},
+				{"dye:".. first, "dye:" .. second},
 		}
 	})
 	
 	minetest.register_craft({
-		output = 'dye:' .. new ..' 2',
+		output = "dye:" .. new .." 2",
 		recipe = {
-				{'dye:'.. second, 'dye:' .. first},
+				{"dye:".. second, "dye:" .. first},
 		}
 	})
 	
 	minetest.register_craft({
-		output = 'dye:' .. new ..' 2',
+		output = "dye:" .. new .." 2",
 		recipe = {
-				{'dye:'.. first},
-				{'dye:'.. second},
+				{"dye:".. first},
+				{"dye:".. second},
 		}
 	})
 	
 	minetest.register_craft({
-		output = 'dye:' .. new ..' 2',
+		output = "dye:" .. new .." 2",
 		recipe = {
-				{'dye:'.. second},
-				{'dye:'.. first},
+				{"dye:".. second},
+				{"dye:".. first},
 		}
 	})
 		
 	minetest.register_craft({
-		output = 'dye:' .. new ..' 2',
+		output = "dye:" .. new .." 2",
 		recipe = {
-				{'dye:'.. second,''},
-				{'','dye:'.. first},
+				{"dye:".. second,""},
+				{"","dye:".. first},
 		}
 	})
 		
 	minetest.register_craft({
-		output = 'dye:' .. new ..' 2',
+		output = "dye:" .. new .." 2",
 		recipe = {
-				{'dye:'.. first,''},
-				{'','dye:'.. second},
+				{"dye:".. first,""},
+				{"","dye:".. second},
 		}
 	})
 	
 	minetest.register_craft({
-		output = 'dye:' .. new ..' 2',
+		output = "dye:" .. new .." 2",
 		recipe = {
-				{'','dye:'.. second},
-				{'dye:'.. first,''},
+				{"","dye:".. second},
+				{"dye:".. first,""},
 		}
 	})	
 	
 	minetest.register_craft({
-		output = 'dye:' .. new ..' 2',
+		output = "dye:" .. new .." 2",
 		recipe = {
-				{'','dye:'.. first},
-				{'dye:'.. second,''},
+				{"","dye:".. first},
+				{"dye:".. second,""},
 		}
 	})
 end
 
 --second
-addSMrecipe('orange','red','yellow')
+addSMrecipe("orange","red","yellow")
 minetest.register_craft({
-	output = 'dye:orange 1',
+	output = "dye:orange 1",
 	recipe = {
-			{'flowers:tulip'},
+			{"flowers:tulip"},
 	}
 })
-addSMrecipe('cyan','green','blue')
-addSMrecipe('purple','red','blue')
+addSMrecipe("cyan","green","blue")
+addSMrecipe("purple","red","blue")
 minetest.register_craft({
-	output = 'dye:purple 1',
+	output = "dye:purple 1",
 	recipe = {
-			{'flowers:viola'},
+			{"flowers:viola"},
 	}
 })
-addSMrecipe('gray','black','white')
-addSMrecipe('light_blue','white','blue')
-addSMrecipe('pink','red','white')
-addSMrecipe('lime','green','white')
+addSMrecipe("gray","black","white")
+addSMrecipe("light_blue","white","blue")
+addSMrecipe("pink","red","white")
+addSMrecipe("lime","green","white")
 
 --third
-addSMrecipe('magenta','purple','pink')
-addSMrecipe('light_gray','gray','white')
+addSMrecipe("magenta","purple","pink")
+addSMrecipe("light_gray","gray","white")
 
 --first
 minetest.register_craft({
-	output = 'dye:red 1',
+    type = "shapeless",
+	output = "dye:red 1",
 	recipe = {
-			{'flowers:rose'},
+			"flowers:rose",
 	}
 })
 minetest.register_craft({
-	output = 'dye:white 1',
+    type = "shapeless",
+	output = "dye:white 1",
 	recipe = {
-			{'flowers:dandelion_white'},
+			"flowers:dandelion_white",
 	}
 })
 minetest.register_craft({
-	output = 'dye:yellow 1',
+    type = "shapeless",
+	output = "dye:yellow 1",
 	recipe = {
-			{'flowers:dandelion_yellow'},
+			"flowers:dandelion_yellow",
 	}
 })
 minetest.register_craft({
+    type = "shapeless",
     type = "cooking",
     output = "dye:green",
     recipe = "default:cactus",
     cooktime = 5,
 })
 minetest.register_craft({
-	output = 'dye:brown 2', -- because bric is big
+    type = "shapeless",
+	output = "dye:brown 2", -- because bric is big
 	recipe = {
-			{'default:clay_brick'},
+			"default:clay_brick",
 	}
 })
 minetest.register_craft({
-	output = 'dye:black 1',
+    type = "shapeless",
+	output = "dye:black 1",
 	recipe = {
-			{'default:scorched_stuff'},
+			"default:scorched_stuff",
 	}
 })
 
