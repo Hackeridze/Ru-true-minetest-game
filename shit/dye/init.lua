@@ -105,3 +105,135 @@ minetest.register_craftitem("dye:brown", {
 
 
 --Dye recipes
+local addSMrecipe = function(new, first, second) { 
+	minetest.register_craft({
+		output = 'dye:' .. new ..' 2',
+		recipe = {
+				{'dye:'.. first, 'dye:' .. second},
+		}
+	})
+	
+	minetest.register_craft({
+		output = 'dye:' .. new ..' 2',
+		recipe = {
+				{'dye:'.. second, 'dye:' .. first},
+		}
+	})
+	
+	minetest.register_craft({
+		output = 'dye:' .. new ..' 2',
+		recipe = {
+				{'dye:'.. first},
+				{'dye:'.. second},
+		}
+	})
+	
+	minetest.register_craft({
+		output = 'dye:' .. new ..' 2',
+		recipe = {
+				{'dye:'.. second},
+				{'dye:'.. first},
+		}
+	})
+		
+	minetest.register_craft({
+		output = 'dye:' .. new ..' 2',
+		recipe = {
+				{'dye:'.. second,''},
+				{'','dye:'.. first},
+		}
+	})
+		
+	minetest.register_craft({
+		output = 'dye:' .. new ..' 2',
+		recipe = {
+				{'dye:'.. first,''},
+				{'','dye:'.. second},
+		}
+	})
+	
+	minetest.register_craft({
+		output = 'dye:' .. new ..' 2',
+		recipe = {
+				{'','dye:'.. second},
+				{'dye:'.. first,''},
+		}
+	})	
+	
+	minetest.register_craft({
+		output = 'dye:' .. new ..' 2',
+		recipe = {
+				{'','dye:'.. first},
+				{'dye:'.. second,''},
+		}
+	})
+}
+
+--second
+addSMrecipe('orange','red','yellow')
+minetest.register_craft({
+	output = 'dye:orange 1',
+	recipe = {
+			{'flowers:tulip'},
+	}
+})
+addSMrecipe('cyan','green','blue')
+addSMrecipe('purple','red','blue')
+minetest.register_craft({
+	output = 'dye:purple 1',
+	recipe = {
+			{'flowers:viola'},
+	}
+})
+addSMrecipe('gray','black','white')
+addSMrecipe('light_blue','white','blue')
+addSMrecipe('pink','red','white')
+addSMrecipe('lime','green','white')
+
+--third
+addSMrecipe('magenta','purple','pink')
+addSMrecipe('light_gray','gray','white')
+
+--first
+minetest.register_craft({
+	output = 'dye:red 1',
+	recipe = {
+			{'flowers:rose'},
+	}
+})
+minetest.register_craft({
+	output = 'dye:white 1',
+	recipe = {
+			{'flowers:dandelion_white'},
+	}
+})
+minetest.register_craft({
+	output = 'dye:yellow 1',
+	recipe = {
+			{'flowers:dandelion_yellow'},
+	}
+})
+minetest.register_craft({
+    type = "cooking",
+    output = "dye:green",
+    recipe = "default:cactus",
+    cooktime = 5,
+})
+minetest.register_craft({
+	output = 'dye:brown 2', -- because bric is big
+	recipe = {
+			{'default:clay_brick'},
+	}
+})
+minetest.register_craft({
+	output = 'dye:black 1',
+	recipe = {
+			{'default:scorched_stuff'},
+	}
+})
+
+
+
+
+
+
