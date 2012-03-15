@@ -146,11 +146,11 @@ end
 
 -- Crafts
 minetest.register_craft({
-	output = 'CraftItem "flowers:flower_pot" 1',
-	recipe = {
-		{'craft "clay_brick" 1', '', 'craft "clay_brick" 1'},
-		{'', 'craft "clay_brick" 1', ''},
-	}
+       output = 'flowers:flower_pot 5',
+       recipe = {
+               {'default:clay_brick', '', 'default:clay_brick'},
+               {'', 'default:clay_brick', ''},
+       }
 })
 
 for _, color in ipairs(FLOWERS) do
@@ -158,18 +158,18 @@ for _, color in ipairs(FLOWERS) do
 	local pname = fname .. '_pot'
 
 	minetest.register_craft({
-		output = 'CraftItem "' .. pname .. '" 9',
+		output = pname .. ' 1',
 		recipe = {
-			{'NodeItem "' .. fname .. '" 1'},
-			{'CraftItem "flowers:flower_pot" 1'},
+			{fname},
+			{'flowers:flower_pot'},
 		}
 	})
 end
 
 minetest.register_craft({
-	output = 'CraftItem "flowers:cotton" 1',
+	output = 'flowers:cotton 1',
 	recipe = {
-		{'NodeItem "flowers:flower_cotton" 1'},
+		{'flowers:flower_cotton 1'},
 	}
 })
 
