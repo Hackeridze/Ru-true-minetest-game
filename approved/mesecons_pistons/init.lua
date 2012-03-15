@@ -201,7 +201,8 @@ mesecon:register_on_signal_off(function (pos, node)
 	if node.name=="mesecons_pistons:piston_sticky" or node.name=="mesecons_pistons:piston_normal" then
 		local objs = minetest.env:get_objects_inside_radius(pos, 2)
 		for k, obj in pairs(objs) do
-			if obj:get_entity_name() == "mesecons_pistons:piston_pusher_normal" or obj:get_entity_name() == "mesecons_pistons:piston_pusher_sticky" then
+			local obj_name = obj:get_entity_name()
+			if obj_name == "mesecons_pistons:piston_pusher_normal" or obj_name == "mesecons_pistons:piston_pusher_sticky" then
 				obj:remove()
 			end
 		end
@@ -264,7 +265,8 @@ minetest.register_on_dignode(function(pos, node)
 	if node.name=="mesecons_pistons:piston_normal" or node.name=="mesecons_pistons:piston_sticky" then
 		local objs = minetest.env:get_objects_inside_radius(pos, 2)
 		for k, obj in pairs(objs) do
-			if obj:get_entity_name() == "mesecons_pistons:piston_pusher_normal" or obj:get_entity_name() == "mesecons_pistons:piston_pusher_sticky" then
+			local obj_name = obj:get_entity_name()
+			if obj_name == "mesecons_pistons:piston_pusher_normal" or obj_name == "mesecons_pistons:piston_pusher_sticky" then
 				obj:remove()
 			end
 		end
