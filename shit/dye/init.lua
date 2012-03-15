@@ -105,7 +105,7 @@ minetest.register_craftitem("dye:brown", {
 
 
 --Dye recipes
-local addSMrecipe = function(new, first, second) { 
+local addSMrecipe = function(new, first, second) 
 	minetest.register_craft({
 		output = 'dye:' .. new ..' 2',
 		recipe = {
@@ -167,7 +167,7 @@ local addSMrecipe = function(new, first, second) {
 				{'dye:'.. second,''},
 		}
 	})
-}
+end
 
 --second
 addSMrecipe('orange','red','yellow')
