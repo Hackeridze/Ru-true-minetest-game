@@ -29,7 +29,7 @@ for _, color in ipairs(DYE_COLORS) do
 		paramtype = 'light',
 		is_ground_content = true,
 		walkable = true,
-		material = minetest.digprop_glasslike(1.0),
+		material = minetest.digprop_glasslike(0.5),
 	})
 end
 
@@ -52,10 +52,7 @@ end
 		paramtype = 'light',
 		is_ground_content = true,
 		walkable = true,
-		selection_box = {
-			type = 'fixed',
-		},
-		material = minetest.digprop_dirtlike(0.75),
+		material = minetest.digprop_dirtlike(0.5),
 	})
 			
 	minetest.register_craft({
@@ -76,8 +73,5 @@ end
 		paramtype = 'light',
 		is_ground_content = true,
 		walkable = true,
-		selection_box = {
-			type = 'fixed',
-		},
-		material = minetest.digprop_glasslike(1.0),
+		material = minetest.digprop_glasslike(0.5),
 	})
