@@ -29,9 +29,6 @@ for _, color in ipairs(DYE_COLORS) do
 		paramtype = 'light',
 		is_ground_content = true,
 		walkable = true,
-		selection_box = {
-			type = 'fixed',
-		},
 		material = minetest.digprop_glasslike(1.0),
 	})
 end
