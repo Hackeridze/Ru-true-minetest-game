@@ -7,7 +7,7 @@ addore = function(mn,oreName, oreDescription, oreTexture, oreMaterial,
     local ore = mn .. ":" .. oreName
     local oreNode = {
         description = oreDescription,
-        tile_images = {"default_stone.png^"..oreTexture},
+        tile_images = {oreTexture},
         is_ground_content = true,
         material = oreMaterial
     }
