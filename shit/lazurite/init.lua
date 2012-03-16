@@ -1,6 +1,6 @@
-addore("lazurite","lazurite_ore","Lazurite",
+addore("lazurite","lazurite_ore","Lazurite ore",
                 "default_stone.png^lazurite_ore.png",minetest.digprop_stonelike(1.6),
-                nil, -- any tool
+                {"default:pick_steel","gold:pick_gold", "default:pick_mese"},
                 10,
                 15,{
                     x = 4,
@@ -8,4 +8,4 @@ addore("lazurite","lazurite_ore","Lazurite",
                     z = 2,
                 },
                 -31000,-300,
-                "lazurite", "Lazurite", "lazurite.png", 8)
+                "lazurite", "Lazurite", "lazurite.png", 4)
