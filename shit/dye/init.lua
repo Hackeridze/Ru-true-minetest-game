@@ -77,11 +77,11 @@ minetest.register_craftitem("dye:cyan", {
 	description = "Cyan dye",
 	inventory_image = "dye_cyan.png",
 })
-
-minetest.register_craftitem("dye:blue", {
+minetest.register_alias("dye:blue", "lazurite:lazurite")
+--[[minetest.register_craftitem("dye:blue", {
 	description = "Blue dye",
 	inventory_image = "dye_blue.png",
-})
+})]]
 
 minetest.register_craftitem("dye:purple", {
 	description = "Purple dye",

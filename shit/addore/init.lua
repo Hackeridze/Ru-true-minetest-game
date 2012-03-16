@@ -1,10 +1,10 @@
-addore = function(oreName, oreDescription, oreTexture, oreMaterial,
+addore = function(mn,oreName, oreDescription, oreTexture, oreMaterial,
                   digTools, 
                   maxAmountForChunk, rarity, size,
                   minY, maxY,
                   dropName, dropDescription, dropTexture, dropAmount)
 
-    local ore = "addore:" .. oreName
+    local ore = mn .. ":" .. oreName
     local oreNode = {
         description = oreDescription,
         tile_images = {"default_stone.png^"..oreTexture},
@@ -14,7 +14,7 @@ addore = function(oreName, oreDescription, oreTexture, oreMaterial,
     if dropName ~= nil then
         local drop = ""
         if dropName ~= "" then
-            drop = "addore:" .. dropName
+            drop = mn .. ":" .. dropName
             minetest.register_craftitem(drop, {
                 description = dropDescription,
                 image = dropTexture
@@ -62,18 +62,7 @@ addore = function(oreName, oreDescription, oreTexture, oreMaterial,
 end
 
 
---[[addore("check_ore","BAD ORE",
-                "check_ore.png",minetest.digprop_stonelike(1.4),
-                50,
-                1,{
-                    x = 1,
-                    y = 1,
-                    z = 1,
-                },
-                -31000,100,
-                "huita","This is huita",
-                "check_shit.png",10, {"~pick"})]]
-
+--[[ example
 addore("check_ore","BAD ORE",
                 "check_ore.png",minetest.digprop_stonelike(1.4),
                 nil, -- any tool
@@ -84,3 +73,4 @@ addore("check_ore","BAD ORE",
                     z = 1,
                 },
                 -31000,100)
+]]--
