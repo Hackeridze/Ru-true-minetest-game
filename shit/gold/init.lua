@@ -7,7 +7,7 @@ addore("gold","gold_ore","Gold ore",
                     y = 2,
                     z = 2,
                 },
-                -31000,-300,
+                -31000,-200,
                 "gold_nugget", "Gold Nugget", "gold_nugget.png", 1)
                 
 register_tool_type("gold", "Gold", "gold", "gold:gold_ingot", 0.5, 36, {sword_speed = -0.4})
