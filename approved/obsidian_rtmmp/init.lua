@@ -2,6 +2,7 @@
 -- modifed by rtmmp-team
 
 minetest.register_node("obsidian_rtmmp:obsidian_block", {
+    description="Obsidian",
     tile_images = {"obsidian_rtmmp_block.png"},
     inventory_image = minetest.inventorycube("obsidian_rtmmp_block.png"),
     is_ground_content = true,
