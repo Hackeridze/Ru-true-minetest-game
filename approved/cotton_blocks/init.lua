@@ -21,9 +21,8 @@ local CB_NAMES_COLORS = {
 minetest.register_craft({
     output = 'cotton_blocks:white',
     recipe = {
-        {'flowers:cotton','flowers:cotton','flowers:cotton'},
-        {'flowers:cotton','flowers:cotton','flowers:cotton'},
-        {'flowers:cotton','flowers:cotton','flowers:cotton'},
+        {'flowers:cotton','flowers:cotton'},
+        {'flowers:cotton','flowers:cotton'},
     }
 })
 
@@ -99,4 +98,5 @@ for color, name in pairs(CB_NAMES_COLORS) do
         minetest.digprop_leaveslike(2.0), -- WTF???????? FUCK!!!!!!!!!1111111!!!!!!!!!111
         })
     addCBrecipe("cotton_blocks:" .. color,"cotton_blocks:white",color)
+    addCBrecipe("cotton_blocks:white","cotton_blocks:" .. color,"white")
 end
