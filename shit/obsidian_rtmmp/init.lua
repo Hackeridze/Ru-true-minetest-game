@@ -22,7 +22,7 @@ end
 
 local function replace(pos, dx, dy, dz)
     if check_water(pos, dx, dy, dz) then
-        minetest.env:remove_node({pos.x + dx, pos.y + dy, pos.z + dz})
+        minetest.env:remove_node({x = pos.x + dx, y = pos.y + dy, z = pos.z + dz})
     end
 end
 
