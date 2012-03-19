@@ -50,7 +50,7 @@ minetest.register_alias('dye:blue', 'lazurite:lazurite')
 local addSMrecipe = function(new, first, second)
 	minetest.register_craft({
 		type = 'shapeless',
-		output = 'dye:' .. new ..'',
+		output = 'dye:' .. new ..' 2',
 		recipe = {
 				'dye:' .. first,
 				'dye:' .. second,
