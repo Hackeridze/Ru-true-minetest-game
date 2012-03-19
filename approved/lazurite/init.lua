@@ -8,4 +8,4 @@ addore("lazurite","lazurite_ore","Lazurite ore",
                     z = 2,
                 },
                 -31000,-300,
-                "lazurite", "Lazurite", "lazurite.png", 4)
+                "lazurite", "Lazurite", "dye_blue.png", 4)
