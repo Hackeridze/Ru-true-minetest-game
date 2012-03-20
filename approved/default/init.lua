@@ -504,10 +504,10 @@ minetest.register_tool("default:pick_mese", {
 	description = "Mese Pickaxe",
 	inventory_image = "default_tool_mesepick.png",
 	tool_digging_properties = {
-		basetime = 0,
+		basetime = 0.5,
 		dt_weight = 0,
-		dt_crackiness = 0,
-		dt_crumbliness = 0,
+		dt_crackiness = -0.5,
+		dt_crumbliness = 2,
 		dt_cuttability = 0,
 		basedurability = 1337,
 		dd_weight = 0,

@@ -6,7 +6,13 @@ minetest.register_node("obsidian_rtmmp:obsidian_block", {
     tile_images = {"obsidian_rtmmp_block.png"},
     inventory_image = minetest.inventorycube("obsidian_rtmmp_block.png"),
     is_ground_content = true,
-    material = minetest.digprop_stonelike(15.0), -- obsidian is hard, like a stone, but harder
+    material = {
+		diggablity = "normal",
+		weight = 50,
+		crackiness = 0,
+		crumbliness = 0,
+		cuttability = 0,
+	}
 })
 
 local function check_water(pos, dx, dy, dz)
