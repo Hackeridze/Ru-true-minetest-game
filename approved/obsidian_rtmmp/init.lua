@@ -7,12 +7,12 @@ minetest.register_node("obsidian_rtmmp:obsidian_block", {
     inventory_image = minetest.inventorycube("obsidian_rtmmp_block.png"),
     is_ground_content = true,
     material = {
-		diggablity = "normal",
-		weight = 50,
-		crackiness = 0,
-		crumbliness = 0,
-		cuttability = 0,
-	}
+        diggablity = "normal",
+        weight = 50,
+        crackiness = 0,
+        crumbliness = 0,
+        cuttability = 0,
+    }
 })
 
 local function check_water(pos, dx, dy, dz)
