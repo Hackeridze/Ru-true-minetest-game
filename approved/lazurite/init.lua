@@ -23,3 +23,9 @@ minetest.register_craft({
         { 'lazurite:lazurite','lazurite:lazurite','lazurite:lazurite'},
     }
 })
+minetest.register_craft({
+    output = 'lazurite:lazurite 9',
+    recipe = {
+        { 'lazurite:lazurite_block'},
+    }
+})
