@@ -25,7 +25,6 @@ local function add_down(node,pos)
 		local current_pos = {x = pos.x, y = pos.y - i, z = pos.z}
 		local current_node = minetest.env:get_node(current_pos)
 		if current_node.name == "air" then
-	print("dadadadad" .. i .. current_pos.y)
 			table.insert(grilles_to_add,{pos = current_pos, time = i})
 		else
 			return
@@ -63,7 +62,6 @@ minetest.register_globalstep(function(dtime)
 	while delta >= 1 do
 		delta = delta - 1
 		for num, grille in ipairs(grilles_to_remove) do
-	print(grille.time)
 			if grille.time == 1 then 
 				minetest.env:remove_node(grille.pos)
 				grille.time = nil
