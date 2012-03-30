@@ -1,10 +1,11 @@
-local GRILLE_HEIGHT = 3;
+local GRILLE_HEIGHT = 11;
 
 local grilles_to_remove = {}
+local grilles_to_add = {}
 
 minetest.register_node("castle_grille:mechanism", {
 	description = "Grille mechanism",
-	tile_images = {"default_steel_block.png"},
+	tile_images = {"grille_meh.png"},
 	is_ground_content = true,
 	material = minetest.digprop_stonelike(30.0),
 })
@@ -12,9 +13,10 @@ minetest.register_node("castle_grille:mechanism", {
 minetest.register_node("castle_grille:grille", {
 	description = "Grille",
 	drawtype = "fencelike",
-	tile_images = {"default_steel_block.png"},
+	paramtype = "light",
+	tile_images = {"grille_gril.png"},
 	is_ground_content = true,
-	material = minetest.digprop_stonelike(1000.0),
+	material = minetest.digprop_constanttime(90),
 	drop = "",
 })
 
@@ -23,8 +25,8 @@ local function add_down(node,pos)
 		local current_pos = {x = pos.x, y = pos.y - i, z = pos.z}
 		local current_node = minetest.env:get_node(current_pos)
 		if current_node.name == "air" then
-			minetest.env:remove_node(current_pos)
-			minetest.env:add_node(current_pos, {name = "castle_grille:grille"})
+	print("dadadadad" .. i .. current_pos.y)
+			table.insert(grilles_to_add,{pos = current_pos, time = i})
 		else
 			return
 		end
@@ -49,7 +51,7 @@ mesecon:register_on_signal_on(function (pos, node)
 	end
 end)
 
-mesecon:register_on_signal_off(function (node,pos)
+mesecon:register_on_signal_off(function (pos,node)
 	if node.name == "castle_grille:mechanism" then
 		remove_up(node,pos)
 	end
@@ -58,14 +60,36 @@ end)
 local delta = 0
 minetest.register_globalstep(function(dtime)
 	delta = delta + dtime
-	while delta >= 3 do
-		delta = delta - 3
+	while delta >= 1 do
+		delta = delta - 1
 		for num, grille in ipairs(grilles_to_remove) do
+	print(grille.time)
 			if grille.time == 1 then 
 				minetest.env:remove_node(grille.pos)
-			else
+				grille.time = nil
+				grille.pos = nil
+			elseif grille.time then
+				grille.time = grille.time - 1
+			end
+		end
+		for num, grille in ipairs(grilles_to_add) do
+			if grille.time == 1  then 
+				minetest.env:remove_node(grille.pos)
+				minetest.env:add_node(grille.pos, {name = "castle_grille:grille"})
+				grille.time = nil
+				grille.pos = nil
+			elseif grille.time then
 				grille.time = grille.time - 1
 			end
 		end
 	end
 end)
+
+minetest.register_craft({
+	output = 'castle_grille:mechanism',
+	recipe = {
+		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
+		{'default:stone', 'default:stick', 'default:stone'},
+		{'default:steel_ingot', 'default:stick', 'default:steel_ingot'},
+	}
+})
