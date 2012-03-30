@@ -59,8 +59,8 @@ end)
 local delta = 0
 minetest.register_globalstep(function(dtime)
 	delta = delta + dtime
-	while delta >= 1 do
-		delta = delta - 1
+	while delta >= 3 do
+		delta = delta - 3
 		for num, grille in ipairs(grilles_to_remove) do
 			if grille.time == 1 then 
 				minetest.env:remove_node(grille.pos)
