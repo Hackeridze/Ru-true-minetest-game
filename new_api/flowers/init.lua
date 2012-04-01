@@ -88,7 +88,7 @@ for _, color in ipairs(FLOWERS) do
 			type = "fixed",
 			fixed = {-1/5-0.1, -1/2, -1/5-0.1, 1/5+0.1, 1/5+0.1, 1/5+0.1},
 		},
-		groups = {snappy=2},
+		groups = {dig_immediate=3},
 		sounds = default.node_sound_leaves_defaults(),
 	})
 end
@@ -105,7 +105,7 @@ minetest.register_node('flowers:flower_waterlily', {
 		type = "fixed",
 		fixed = {-1/2, -1/2, -1/2, 1/2, -0.52, 1/2},
 	},
-	groups = {snappy=2},
+	groups = {dig_immediate=3},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
