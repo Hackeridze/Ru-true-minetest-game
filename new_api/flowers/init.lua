@@ -80,8 +80,9 @@ for _, color in ipairs(FLOWERS) do
 		visual_scale = FLOWERS_VISUAL_SCALE,
 		tile_images = { fname .. '.png' },
 		inventory_image = fname .. '.png',
+		wield_image = fname .. '.png',
 		sunlight_propagates = true,
-		paramtype = 'light',
+		paramtype = "light",
 		walkable = false,
 		selection_box = {
 			type = "fixed",
