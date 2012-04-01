@@ -2,7 +2,7 @@ local GRILLE_HEIGHT = 11;
 
 local grilles_to_remove = {}
 local grilles_to_add = {}
-
+local tmp = {}
 minetest.register_node("castle_grille:mechanism", {
 	description = "Grille mechanism",
 	tile_images = {"grille_meh.png"},
@@ -20,17 +20,18 @@ minetest.register_node("castle_grille:grille", {
 	drop = "",
 })
 
-local function add_down(pos)
-	for i = 1, GRILLE_HEIGHT do
-		local current_pos = {x = pos.x, y = pos.y - i, z = pos.z}
-		local current_node = minetest.env:get_node(current_pos)
-		if current_node.name == "air" then
-			grilles_to_add[current_pos] = i
-		else
-			return
-		end
-	end
-end
+--local function add_down(pos)
+	--for i = 1, GRILLE_HEIGHT do
+		--local current_pos = {x = pos.x, y = pos.y - i, z = pos.z}
+		--local current_node = minetest.env:get_node(current_pos)
+		--if current_node.name == "air" then
+			--grilles_to_add[current_pos] = i
+		--else
+			--return
+		--end
+	--end
+	--grilles_to_add[pos] = GRILLE_HEIGHT
+--end
 
 local function remove_up(pos, height, reversed)
 	if height > GRILLE_HEIGHT then
@@ -51,7 +52,8 @@ end
 
 mesecon:register_on_signal_on(function (pos, node)
 	if node.name == "castle_grille:mechanism" then
-		add_down(pos)
+		--add_down(pos)
+		grilles_to_add[{x = pos.x, y = pos.y - 1, z = pos.z}] = GRILLE_HEIGHT
 	end
 end)
 
@@ -64,8 +66,8 @@ end)
 local delta = 0
 minetest.register_globalstep(function(dtime)
 	delta = delta + dtime
-	while delta >= 3 do
-		delta = delta - 3
+	while delta >= 1 do
+		delta = delta - 1
 		for pos, time in pairs(grilles_to_remove) do
 			if time == 1 and minetest.env:get_node(pos).name == "castle_grille:grille" then
 				minetest.env:remove_node(pos)
@@ -75,12 +77,16 @@ minetest.register_globalstep(function(dtime)
 			end
 		end
 		for pos, time in pairs(grilles_to_add) do
-			if time == 1 and minetest.env:get_node(pos).name == "air"  then
+			if minetest.env:get_node(pos).name == "air"  then
 				minetest.env:add_node(pos, {name = "castle_grille:grille"})
 				grilles_to_add[pos] = nil
-			else
-				grilles_to_add[pos] = time - 1
-	end
+				if time ~= 1 then
+					tmp[{x = pos.x, y = pos.y - 1, z = pos.z}] = time - 1
+				end
+			end
+		end
+		for pos, time in pairs(tmp) do
+			grilles_to_add[pos] = time
 		end
 	end
 end)
