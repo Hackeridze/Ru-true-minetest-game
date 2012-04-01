@@ -25,7 +25,7 @@ local function add_down(pos)
 		local current_pos = {x = pos.x, y = pos.y - i, z = pos.z}
 		local current_node = minetest.env:get_node(current_pos)
 		if current_node.name == "air" then
-            grilles_to_add[current_pos] = i
+			grilles_to_add[current_pos] = i
 		else
 			return
 		end
@@ -33,20 +33,20 @@ local function add_down(pos)
 end
 
 local function remove_up(pos, height, reversed)
-    if height > GRILLE_HEIGHT then
-        return height
-    end
-    local current_node = minetest.env:get_node(pos)
-    if current_node.name ~= "castle_grille:grille" then
-        return height
-    end
-    local max_h = remove_up({x = pos.x, y =  pos.y - 1, z = pos.z}, height + 1)
-    if reversed == true then
-        grilles_to_remove[pos] = height + 1
-    else
-        grilles_to_remove[pos] = max_h - height
-    end
-    return max_h
+	if height > GRILLE_HEIGHT then
+		return height
+	end
+	local current_node = minetest.env:get_node(pos)
+	if current_node.name ~= "castle_grille:grille" then
+		return height
+	end
+	local max_h = remove_up({x = pos.x, y =  pos.y - 1, z = pos.z}, height + 1)
+	if reversed == true then
+		grilles_to_remove[pos] = height + 1
+	else
+		grilles_to_remove[pos] = max_h - height
+	end
+	return max_h
 end
 
 mesecon:register_on_signal_on(function (pos, node)
@@ -69,9 +69,9 @@ minetest.register_globalstep(function(dtime)
 		for pos, time in pairs(grilles_to_remove) do
 			if time == 1 and minetest.env:get_node(pos).name == "castle_grille:grille" then
 				minetest.env:remove_node(pos)
-                grilles_to_remove[pos] = nil
+				grilles_to_remove[pos] = nil
 			else
-                grilles_to_remove[pos] = time - 1
+				grilles_to_remove[pos] = time - 1
 			end
 		end
 		for pos, time in pairs(grilles_to_add) do
@@ -79,16 +79,16 @@ minetest.register_globalstep(function(dtime)
 				minetest.env:add_node(pos, {name = "castle_grille:grille"})
 				grilles_to_add[pos] = nil
 			else
-			    grilles_to_add[pos] = time - 1
-            end
+				grilles_to_add[pos] = time - 1
+	end
 		end
 	end
 end)
 
 minetest.register_on_dignode(function(pos, oldnode)
-    if oldnode.name == "castle_grille:grille" or oldnode.name == "castle_grille:mechanism" then
-        remove_up({x = pos.x, y = pos.y - 1, z = pos.z}, 0, true)
-    end
+	if oldnode.name == "castle_grille:grille" or oldnode.name == "castle_grille:mechanism" then
+		remove_up({x = pos.x, y = pos.y - 1, z = pos.z}, 0, true)
+	end
 end)
 
 minetest.register_craft({
