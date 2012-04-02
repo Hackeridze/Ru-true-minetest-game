@@ -1,5 +1,5 @@
--- default (Minetest 0.4 mod)
--- Most default stuff
+-- Minetest 0.4 mod: default
+-- See README.txt for licensing and other information.
 
 -- The API documentation in here was moved into doc/lua_api.txt
 
@@ -10,6 +10,10 @@ LIGHT_MAX = 14
 
 -- Definitions made by this mod that other mods can use too
 default = {}
+
+-- Load other files
+dofile(minetest.get_modpath("default").."/mapgen.lua")
+dofile(minetest.get_modpath("default").."/leafdecay.lua")
 
 --
 -- Tool definition
@@ -48,7 +52,7 @@ minetest.register_tool("default:pick_stone", {
 	tool_capabilities = {
 		max_drop_level=0,
 		groupcaps={
-			cracky={times={[1]=2.00, [2]=1.20, [3]=0.80}, uses=20, maxlevel=1}
+			cracky={times={[1]=3.00, [2]=1.20, [3]=0.80}, uses=20, maxlevel=1}
 		}
 	},
 })
@@ -72,7 +76,7 @@ minetest.register_tool("default:pick_mese", {
 			cracky={times={[1]=2.0, [2]=1.0, [3]=0.5}, uses=20, maxlevel=3},
 			crumbly={times={[1]=2.0, [2]=1.0, [3]=0.5}, uses=20, maxlevel=3},
 			snappy={times={[1]=2.0, [2]=1.0, [3]=0.5}, uses=20, maxlevel=3},
-			fastness={times={[1]=25.0, [2]=19.0, [3]=13}, uses=10, maxlevel=3} -- fastness group for obsidian
+			snappy={fastness={[1]=25.0, [2]=19.0, [3]=13.5}, uses=10, maxlevel=3}
 		}
 	},
 })
@@ -82,7 +86,7 @@ minetest.register_tool("default:shovel_wood", {
 	tool_capabilities = {
 		max_drop_level=0,
 		groupcaps={
-			crumbly={times={[1]=2.00, [2]=0.80, [3]=0.50}, uses=10, maxlevel=1}
+			crumbly={times={[1]=3.00, [2]=0.80, [3]=0.50}, uses=10, maxlevel=1}
 		}
 	},
 })
@@ -92,7 +96,7 @@ minetest.register_tool("default:shovel_stone", {
 	tool_capabilities = {
 		max_drop_level=0,
 		groupcaps={
-			crumbly={times={[1]=1.20, [2]=0.50, [3]=0.30}, uses=20, maxlevel=1}
+			crumbly={times={[1]=1.50, [2]=0.50, [3]=0.30}, uses=20, maxlevel=1}
 		}
 	},
 })
@@ -102,7 +106,7 @@ minetest.register_tool("default:shovel_steel", {
 	tool_capabilities = {
 		max_drop_level=1,
 		groupcaps={
-			crumbly={times={[1]=1.00, [2]=0.70, [3]=0.60}, uses=10, maxlevel=2}
+			crumbly={times={[1]=1.50, [2]=0.70, [3]=0.60}, uses=10, maxlevel=2}
 		}
 	},
 })
@@ -123,7 +127,7 @@ minetest.register_tool("default:axe_stone", {
 	tool_capabilities = {
 		max_drop_level=0,
 		groupcaps={
-			choppy={times={[1]=1.50, [2]=1.00, [3]=0.60}, uses=20, maxlevel=1},
+			choppy={times={[1]=3.00, [2]=1.00, [3]=0.60}, uses=20, maxlevel=1},
 			fleshy={times={[2]=1.30, [3]=0.70}, uses=20, maxlevel=1}
 		}
 	},
@@ -134,7 +138,7 @@ minetest.register_tool("default:axe_steel", {
 	tool_capabilities = {
 		max_drop_level=1,
 		groupcaps={
-			choppy={times={[1]=2.00, [2]=1.60, [3]=1.00}, uses=10, maxlevel=2},
+			choppy={times={[1]=3.00, [2]=1.60, [3]=1.00}, uses=10, maxlevel=2},
 			fleshy={times={[2]=1.10, [3]=0.60}, uses=40, maxlevel=1}
 		}
 	},
@@ -458,18 +462,6 @@ minetest.register_craft({
 	type = "cooking",
 	output = "default:glass",
 	recipe = "default:sand",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "default:coal_lump",
-	recipe = "default:tree",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "default:coal_lump",
-	recipe = "default:jungletree",
 })
 
 minetest.register_craft({
@@ -806,7 +798,7 @@ minetest.register_node("default:tree", {
 	description = "Tree",
 	tile_images = {"default_tree_top.png", "default_tree_top.png", "default_tree.png"},
 	is_ground_content = true,
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=1},
+	groups = {tree=1,snappy=2,choppy=2,oddly_breakable_by_hand=1},
 	sounds = default.node_sound_wood_defaults(),
 })
 
@@ -814,7 +806,7 @@ minetest.register_node("default:jungletree", {
 	description = "Jungle Tree",
 	tile_images = {"default_jungletree_top.png", "default_jungletree_top.png", "default_jungletree.png"},
 	is_ground_content = true,
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=1},
+	groups = {tree=1,snappy=2,choppy=2,oddly_breakable_by_hand=1},
 	sounds = default.node_sound_wood_defaults(),
 })
 
@@ -837,7 +829,7 @@ minetest.register_node("default:leaves", {
 	visual_scale = 1.3,
 	tile_images = {"default_leaves.png"},
 	paramtype = "light",
-	groups = {snappy=3},
+	groups = {snappy=3, leafdecay=3},
 	drop = {
 		max_items = 1,
 		items = {
@@ -963,7 +955,7 @@ minetest.register_node("default:mese", {
 	description = "Mese",
 	tile_images = {"default_mese.png"},
 	is_ground_content = true,
-	groups = {cracky=1,level=2},
+	groups = {cracky=1},
 	sounds = default.node_sound_defaults(),
 })
 
@@ -1300,7 +1292,8 @@ minetest.add_to_creative_inventory('default:lava_source')
 minetest.add_to_creative_inventory('default:ladder')
 
 --
--- Aliases for the current map generator outputs
+-- Aliases for map generator outputs
+-- (required at least by an in-development branch)
 --
 
 minetest.register_alias("mapgen_air", "air")
@@ -1523,12 +1516,5 @@ minetest.register_on_chat_message(function(name, message)
 		return true
 	end
 end)
-
---
--- Done, print some random stuff
---
-
---print("minetest.registered_entities:")
---dump2(minetest.registered_entities)
 
 -- END
