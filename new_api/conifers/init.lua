@@ -105,7 +105,7 @@ minetest.register_node("conifers:leaves", {
 	tile_images = { "conifers_leaves.png" },
 	inventory_image = "conifers_leaves.png",
 	paramtype = "light",
-	groups = {snappy=3},
+	groups = {snappy=3, leafdecay=3},
 	drop = {
 		max_items = 1,
 		items = {
@@ -130,7 +130,7 @@ minetest.register_node("conifers:leaves_special", {
 	tile_images = { "conifers_leaves_special.png" },
 	inventory_image = "conifers_leaves_special.png",
 	paramtype = "light",
-	groups = {snappy=3},
+	groups = {snappy=3, leafdecay=3},
 	drop = {
 		max_items = 1,
 		items = {
