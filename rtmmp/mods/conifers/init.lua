@@ -66,6 +66,7 @@ minetest.register_node("conifers:trunk", {
 	material = minetest.digprop_woodlike(1.0),
 	is_ground_content = true,
 	groups = {
+		tree=1,
 		snappy = 2,
 		choppy = 2,
 		oddly_breakable_by_hand = 3
@@ -92,6 +93,7 @@ minetest.register_node("conifers:trunk_reversed", {
 	legacy_facedir_simple = true,
 	is_ground_content = true,
 	groups = {
+		tree=1,
 		snappy = 2,
 		choppy = 2,
 		oddly_breakable_by_hand = 3
