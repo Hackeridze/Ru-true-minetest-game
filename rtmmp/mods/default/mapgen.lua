@@ -42,10 +42,16 @@ local function generate_ore(name, wherein, minp, maxp, seed, chunks_per_volume, 
 end
 
 minetest.register_on_generated(function(minp, maxp, seed)
-	generate_ore("default:stone_with_coal", "default:stone", minp, maxp, seed,   1/8/8/8,    5, -64,  64)
-	generate_ore("default:stone_with_iron", "default:stone", minp, maxp, seed+1, 1/16/16/16, 5,   3,   7)
-	generate_ore("default:stone_with_iron", "default:stone", minp, maxp, seed+2, 1/12/12/12, 5, -16,   2)
-	generate_ore("default:stone_with_iron", "default:stone", minp, maxp, seed+3, 1/9/9/9,    5, -64, -17)
+	local curseed = seed -- current seed
+	local highlev = 0
+	local lowlev = 31000
+	for i=1,16 do
+		curseed = curseed + 1
+		generate_ore("default:stone_with_iron", "default:stone", minp, maxp, curseed,	1/16/16/(17-i)),	6+i,-lowlev,-highlev)
+		generate_ore("default:stone_with_coal", "default:stone", minp, maxp, curseed,		1/8/8/(9-(i/2)),	5+i,	-lowlev,-highlev)
+		highlev = (lowlev - highlew) * 3 / 4
+	end
+
 	-- Generate clay
 	if maxp.y >= 2 and minp.y <= 0 then
 		-- Assume X and Z lengths are equal
