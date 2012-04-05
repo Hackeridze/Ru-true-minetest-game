@@ -6,6 +6,7 @@ minetest.register_node("lazurite:lazurite_ore", {
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 	drop = "lazurite:lazurite 4"
+	stack_max = 128,
 })
 
 minetest.register_node("lazurite:lazurite_block", {
@@ -15,12 +16,14 @@ minetest.register_node("lazurite:lazurite_block", {
 	material = minetest.digprop_stonelike(1.2),
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
+	stack_max = 128,
 })
 
 minetest.register_craftitem("lazurite:lazurite", {
 	description = "Lazurite",
 	image = "dye_blue.png",
 	groups = {dye = 1}
+	stack_max = 128,
 })
 
 minetest.register_craft({
