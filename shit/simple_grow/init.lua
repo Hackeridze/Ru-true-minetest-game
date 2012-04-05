@@ -108,17 +108,21 @@ function register_transform_plant(grow_table)
                         if #(TRANSFORMS[node.name]) > 1 then
                             rnd = math.random(#(TRANSFORMS[node.name]))
                         end
-                        local transform = TRANSFORMS[node.name][rnd]
-
-                        minetest.env:add_node({
+                        local transform = TRANSFORMS[node.name][rnd] 
+                        
+                        if transform.oldname ~= nil then
+                            minetest.env:add_node(pos, {name = transform.oldname})   
+                        end
+                        
+                        local trans_coord = {
                                 x = pos.x + transform.x,
                                 y = pos.y + transform.y,
                                 z = pos.z + transform.z
-                            }, 
-                            {name = transform.newname}
-                        )
-                        if transform.oldname ~= nil then
-                            minetest.env:add_node(pos, {name = transform.oldname})   
+                            }
+                        if  minetest.env:get_node(trans_coord).name == 'air' then
+                            minetest.env:add_node(trans_coord, {name = transform.newname})                        
+                        else
+                            minetest.env:add_node(pos, {name = transform.newname})                        
                         end
                     end
                 end
