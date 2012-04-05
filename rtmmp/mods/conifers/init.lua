@@ -71,6 +71,7 @@ minetest.register_node("conifers:trunk", {
 		choppy = 2,
 		oddly_breakable_by_hand = 3
 	}
+	stack_max = 128,
 })
 
 minetest.register_node("conifers:trunk_reversed", {
@@ -98,6 +99,7 @@ minetest.register_node("conifers:trunk_reversed", {
 		choppy = 2,
 		oddly_breakable_by_hand = 3
 	}
+	stack_max = 128,
 })
 
 minetest.register_node("conifers:leaves", {
@@ -123,6 +125,7 @@ minetest.register_node("conifers:leaves", {
 			}
 		}
 	},
+	stack_max = 128,
 })
 
 minetest.register_node("conifers:leaves_special", {
@@ -148,6 +151,7 @@ minetest.register_node("conifers:leaves_special", {
 			}
 		}
 	}
+	stack_max = 128,
 })
 
 minetest.register_node("conifers:sapling", {
@@ -163,6 +167,7 @@ minetest.register_node("conifers:sapling", {
 		snappy = 2,
 		dig_immediate = 3
 	}
+	stack_max = 128,
 })
 
 
@@ -528,8 +533,5 @@ function conifers:make_conifer(pos, conifer_type)
 	current_block.y = current_block.y + 1
 	conifers:add_leaves_block(current_block, special)
 
-	-- Blahblahblah
-	print ('[conifers] A conifer has grown at (' .. pos.x .. ',' .. pos.y .. ',' .. pos.z .. ') with a height of ' .. (height))
-	
 	return true
 end
