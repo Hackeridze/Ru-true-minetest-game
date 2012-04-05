@@ -70,7 +70,7 @@ minetest.register_node("conifers:trunk", {
 		snappy = 2,
 		choppy = 2,
 		oddly_breakable_by_hand = 3
-	}
+	},
 	stack_max = 128,
 })
 
@@ -98,7 +98,7 @@ minetest.register_node("conifers:trunk_reversed", {
 		snappy = 2,
 		choppy = 2,
 		oddly_breakable_by_hand = 3
-	}
+	},
 	stack_max = 128,
 })
 
@@ -150,7 +150,7 @@ minetest.register_node("conifers:leaves_special", {
 				items = {'conifers:leaves_special'},
 			}
 		}
-	}
+	},
 	stack_max = 128,
 })
 
@@ -166,7 +166,7 @@ minetest.register_node("conifers:sapling", {
 	groups = {
 		snappy = 2,
 		dig_immediate = 3
-	}
+	},
 	stack_max = 128,
 })
 

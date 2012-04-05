@@ -29,7 +29,7 @@ minetest.register_craft({
 minetest.register_craftitem("moarcraft_rtmmp:char_coal", {
 	description = "Char coal",
 	inventory_image = "default_coal_lump.png",
-	groups = {coal = 1}
+	groups = {coal = 1},
 	stack_max = 128,
 })
 minetest.register_craft({
