@@ -1273,6 +1273,7 @@ minetest.register_craftitem("default:book", {
 minetest.register_craftitem("default:coal_lump", {
 	description = "Lump of coal",
 	inventory_image = "default_coal_lump.png",
+	groups = {coal = 1}
 	stack_max = 128,
 })
 
