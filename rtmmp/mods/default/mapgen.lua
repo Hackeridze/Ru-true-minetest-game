@@ -43,23 +43,31 @@ end
 
 minetest.register_on_generated(function(minp, maxp, seed)
 	local curseed = seed -- current seed
-	local highlev = 0
+	local highlev = 200
 	local lowlev = 31000
 	for i=1,16 do
 		generate_ore("default:stone_with_iron", "default:stone", minp, maxp, curseed,	1/16/24/(17-i),	6+i,-lowlev,-highlev)
-		generate_ore("default:stone_with_coal", "default:stone", minp, maxp, curseed+1,	1/8/16/(9-(i/2)),	5+i,	-lowlev,-highlev)
+		generate_ore("default:stone_with_coal", "default:stone", minp, maxp, curseed+1,	1/8/16/(9-(i/2)),	7+i,	-lowlev,-highlev)
 		highlev = (lowlev - highlev) * 3 / 4
 	end
-	
+
 	highlev = 320
 	lowlev = 31000
 	curseed = curseed + 1
 		for i=1,16 do
-		generate_ore("lazurite:lazurite_ore", "default:stone", minp, maxp, curseed,	1/32/16/(33-i*2),	3+(i*3/2),	-lowlev,-highlev)
+		generate_ore("lazurite:lazurite_ore", "default:stone", minp, maxp, curseed,	1/32/16/(33-i*2),	6+(i*3/2),	-lowlev,-highlev)
 		highlev = (lowlev - highlev) * 3 / 4
 	end
 	curseed = curseed + 1
 
+	highlev = 320
+	lowlev = 31000
+	curseed = curseed + 1
+		for i=1,16 do
+		generate_ore("gold;gold_ore", "default:stone", minp, maxp, curseed,	1/32/24/(33-i*2),	6+(i*3/2),	-lowlev,-highlev)
+		highlev = (lowlev - highlev) * 3 / 4
+	end
+	curseed = curseed + 1
 
 
 	-- Generate clay
