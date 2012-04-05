@@ -13,6 +13,7 @@ minetest.register_node("moarcraft_rtmmp:stone_brick", {
 	often_contains_mineral = true, -- Texture atlas hint
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
+	stack_max = 128,
 })
 
 minetest.register_craft({
