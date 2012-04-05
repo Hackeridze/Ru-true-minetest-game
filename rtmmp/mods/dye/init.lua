@@ -42,6 +42,7 @@ for _, color in pairs(DYE_COLORS) do
 			description = cute_descr(color) .. ' dye',
 			inventory_image = 'dye_' .. color .. '.png',
 			groups = {dye = 1},
+			stack_max = 128,
 		})
 	end
 end
