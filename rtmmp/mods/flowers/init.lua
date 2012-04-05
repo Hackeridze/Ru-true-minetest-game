@@ -90,6 +90,7 @@ for _, color in ipairs(FLOWERS) do
 		},
 		groups = {dig_immediate=3},
 		sounds = default.node_sound_leaves_defaults(),
+		stack_max = 128,
 	})
 end
 
@@ -107,18 +108,21 @@ minetest.register_node('flowers:flower_waterlily', {
 	},
 	groups = {dig_immediate=3},
 	sounds = default.node_sound_leaves_defaults(),
+	stack_max = 128,
 })
 
 -- Items
 minetest.register_craftitem('flowers:flower_pot', {
 	description = "Flower pot",
 	image = 'flower_pot.png',
+	stack_max = 128,
 
 })
 
 minetest.register_craftitem('flowers:cotton', {
 	description = "Cotton",
 	image = 'cotton.png',
+	stack_max = 128,
 
 })
 
@@ -129,6 +133,7 @@ for _, color in ipairs(FLOWERS) do
 	minetest.register_craftitem('flowers:' .. pname, {
 		description = "Flower pot: " .. color,
 		image = pname .. '.png',
+		stack_max = 128,
 	})
 end
 
