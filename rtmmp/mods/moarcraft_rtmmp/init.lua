@@ -40,7 +40,17 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "moarcraft_rtmmp:char_coal",
-	recipe = "default:wood",
+	recipe = "default:tree",
+})
+minetest.register_craft({
+	type = "cooking",
+	output = "moarcraft_rtmmp:char_coal",
+	recipe = "conifers:trunk",
+})
+minetest.register_craft({
+	type = "cooking",
+	output = "moarcraft_rtmmp:char_coal",
+	recipe = "conifers:trunk_reversed",
 })
 minetest.register_craft({
 	output = 'default:torch 4',
