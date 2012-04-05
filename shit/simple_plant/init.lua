@@ -69,3 +69,69 @@ minetest.register_craftitem('simple_plant:n_seed', {
         return itemstack
     end,
 })
+------------------------
+minetest.register_craftitem('simple_plant:strange_seed', {
+    description = 'Strange seed',
+    inventory_image = 'seed_strange.png',
+    stack_max = 99,
+    usable = true,
+    on_use = function(itemstack, user, pointed_thing)
+        -- Must be pointing to node
+        if pointed_thing.type == 'node' then
+            n = minetest.env:get_node(pointed_thing.under)
+            if n.name == 'default:dirt_with_grass' then
+                minetest.env:add_node(pointed_thing.above, {name='simple_plant:sp1'})
+            end
+            itemstack:take_item()
+        end
+        return itemstack
+    end,
+})
+
+register_transform_plant({
+    {   
+        name = 'simple_plant:sp1',
+        transform = {{newname = 'simple_plant:sp2', x =0, y=0, z=0}},
+        time = 0.5,
+        image = 'sp1.png',
+        drop = '',
+        groups = {snappy=3},
+        chance = 0.7
+    },
+    {   
+        name = 'simple_plant:sp2',
+        transform = {{newname = 'simple_plant:sp_fin', oldname ='simple_plant:sp_stem', x =0, y=1, z=0},
+                     {newname = 'simple_plant:sp_fin', oldname ='simple_plant:sp_stem2', x =0, y=1, z=0}},
+        time = 0.5,
+        image = 'sp2.png',
+        drop = '',
+        groups = {snappy=3},
+        chance = 0.7
+    },
+    {   
+        name = 'simple_plant:sp_stem',
+        transform = nil,
+        time = 0.5,
+        image = 'sp_stem.png',
+        drop = '',
+        groups = {snappy=3},
+        chance = 0.7
+    },
+    {   
+        name = 'simple_plant:sp_stem2',
+        transform = nil,
+        time = 0.5,
+        image = 'sp_stem2.png',
+        drop = '',
+        groups = {snappy=3},
+        chance = 0.7
+    },
+     {   
+        name = 'simple_plant:sp_fin',
+        time = 0.5,
+        image = 'sp_fin.png',
+        drop = 'simple_plant:strange_seed',
+        groups = {snappy=3},
+        chance = 0.7
+    }
+})
