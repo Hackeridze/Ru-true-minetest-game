@@ -16,7 +16,7 @@
 
 STANDART_SPGROW_TIME = 120
 
-function register_simple_plant(grow_table)
+function register_plant_with_full_stages(grow_table)
 
     for stage in ipairs(grow_table) do
         if grow_table[stage].chance > 1 then 
@@ -49,4 +49,29 @@ function register_simple_plant(grow_table)
             })
         end
     end
+end
+
+function register_simple_plant(name, final_description, stage_max, stage_time, image_template, final_drop)
+    -- number of stages of growth   [1 .. stage_max]
+    -- image template .. [1 .. stage_max] .. ".png"  --> png
+    local ngrow_table = {}
+    local cur_drop = ''
+    
+    for i=1, stage_max do
+        cur_drop = ''
+        if i == stage_max then
+            cur_drop = final_drop
+        end
+        
+        table.insert(ngrow_table, {
+            name = name .. i,
+            time = stage_time,
+            image = image_template .. i .. ".png",
+            drop = cur_drop,
+            groups = {snappy=3},
+            chance = 0.6
+        })
+    end
+    
+    register_plant_with_full_stages(ngrow_table)
 end

@@ -1,13 +1,13 @@
-minetest.register_craftitem("simple_plant:seed0", {
-    inventory_image = "seed0.png",
+minetest.register_craftitem('simple_plant:seed0', {
+    inventory_image = 'seed0.png',
     stack_max = 99,
     usable = true,
     on_use = function(itemstack, user, pointed_thing)
         -- Must be pointing to node
-        if pointed_thing.type == "node" then
+        if pointed_thing.type == 'node' then
             n = minetest.env:get_node(pointed_thing.under)
             if n.name == 'default:dirt_with_grass' then
-                minetest.env:add_node(pointed_thing.above, {name="simple_plant:splant1"})
+                minetest.env:add_node(pointed_thing.above, {name='simple_plant:splant1'})
             end
             itemstack:take_item()
         end
@@ -15,7 +15,7 @@ minetest.register_craftitem("simple_plant:seed0", {
     end,
 })
 
-register_simple_plant({
+register_plant_with_full_stages({
     {   
         name = 'simple_plant:splant1',
         time = 0.5,
@@ -48,4 +48,24 @@ register_simple_plant({
         groups = {snappy=3},
         chance = 0.4
     },
+})
+---------------------
+register_simple_plant('simple_plant:n', 'Odd flower', 6, 0.5, 'n', 'simple_plant:n_seed 5')
+
+minetest.register_craftitem('simple_plant:n_seed', {
+    description = 'N seed',
+    inventory_image = 'n_seed.png',
+    stack_max = 99,
+    usable = true,
+    on_use = function(itemstack, user, pointed_thing)
+        -- Must be pointing to node
+        if pointed_thing.type == 'node' then
+            n = minetest.env:get_node(pointed_thing.under)
+            if n.name == 'default:dirt_with_grass' then
+                minetest.env:add_node(pointed_thing.above, {name='simple_plant:n1'})
+            end
+            itemstack:take_item()
+        end
+        return itemstack
+    end,
 })
