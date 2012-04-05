@@ -1315,18 +1315,20 @@ minetest.register_alias("mapgen_stone_with_coal", "default:stone_with_coal")
 minetest.register_alias("mapgen_stone_with_iron", "default:stone_with_iron")
 minetest.register_alias("mapgen_mese", "default:mese")
 
+
 --
 -- Some common functions
 --
 
 default.falling_node_names = {}
+default.non_solid_node_names = {}
 
 function nodeupdate_single(p)
 	n = minetest.env:get_node(p)
 	if default.falling_node_names[n.name] ~= nil then
 		p_bottom = {x=p.x, y=p.y-1, z=p.z}
 		n_bottom = minetest.env:get_node(p_bottom)
-		if n_bottom.name == "air" then
+		if default.non_solid_node_names[n_bottom.name] ~= nil then
 			minetest.env:remove_node(p)
 			minetest.env:add_entity(p, "default:falling_"..n.name)
 			nodeupdate(p)
@@ -1349,6 +1351,7 @@ end
 -- Falling stuff
 --
 
+
 function default.register_falling_node(nodename, texture)
 	default.falling_node_names[nodename] = true
 	-- Override naming conventions for stuff like :default:falling_default:sand
@@ -1367,7 +1370,7 @@ function default.register_falling_node(nodename, texture)
 			local pos = self.object:getpos()
 			local bcp = {x=pos.x, y=pos.y-0.7, z=pos.z} -- Position of bottom center point
 			local bcn = minetest.env:get_node(bcp)
-			if bcn.name ~= "air" then
+			if default.non_solid_node_names[bcn.name] == nil then
 				-- Turn to a sand node
 				local np = {x=bcp.x, y=bcp.y+1, z=bcp.z}
 				minetest.env:add_node(np, {name=nodename})
@@ -1381,6 +1384,18 @@ end
 
 default.register_falling_node("default:sand", "default_sand.png")
 default.register_falling_node("default:gravel", "default_gravel.png")
+
+function default.register_non_solid_node(nodename)
+	default.non_solid_node_names[nodename] = true
+end
+
+-- list node types that falling stuff can fall through
+default.register_non_solid_node("air")
+default.register_non_solid_node("default:water_flowing")
+default.register_non_solid_node("default:water_source")
+default.register_non_solid_node("default:lava_flowing")
+default.register_non_solid_node("default:lava_source")
+
 
 --
 -- Global callbacks
