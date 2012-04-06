@@ -1,2 +1,0 @@
-addore
-add_tool
