@@ -21,7 +21,6 @@ minetest.register_node( 'doors:door_wood', {
 	paramtype2          = 'wallmounted',
 	selection_box       = { type = 'wallmounted' },
 	groups              = { choppy=2, dig_immediate=2 },
-	stack_max = 128,
 })
 
 minetest.register_craft( {

@@ -78,7 +78,6 @@ minetest.register_alias("scorched_stuff", "default:scorched_stuff")
 minetest.register_craftitem(":rat", {
 	description = "Rat",
 	inventory_image = "rat.png",
-	stack_max = 128,
 	on_drop = function(item, dropper, pos)
 		minetest.env:add_rat(pos)
 		item:take_item()
@@ -98,13 +97,11 @@ minetest.register_craftitem(":cooked_rat", {
 	description = "Cooked rat",
 	inventory_image = "cooked_rat.png",
 	on_use = minetest.item_eat(6),
-	stack_max = 128,
 })
 
 minetest.register_craftitem(":firefly", {
 	description = "Firefly",
 	inventory_image = "firefly.png",
-	stack_max = 128,
 	on_drop = function(item, dropper, pos)
 		minetest.env:add_firefly(pos)
 		item:take_item()
