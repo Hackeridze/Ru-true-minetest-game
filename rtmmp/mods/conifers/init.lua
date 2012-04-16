@@ -69,7 +69,8 @@ minetest.register_node("conifers:trunk", {
 		tree=1,
 		snappy = 2,
 		choppy = 2,
-		oddly_breakable_by_hand = 3
+		oddly_breakable_by_hand = 3,
+		flammable=2,
 	},
 	stack_max = 128,
 })
@@ -97,7 +98,8 @@ minetest.register_node("conifers:trunk_reversed", {
 		tree=1,
 		snappy = 2,
 		choppy = 2,
-		oddly_breakable_by_hand = 3
+		oddly_breakable_by_hand = 3,
+		flammable=2,
 	},
 	stack_max = 128,
 })
@@ -109,7 +111,7 @@ minetest.register_node("conifers:leaves", {
 	tile_images = { "conifers_leaves.png" },
 	inventory_image = "conifers_leaves.png",
 	paramtype = "light",
-	groups = {snappy=3, leafdecay=3},
+	groups = {snappy=3, leafdecay=3,flammable=2,},
 	drop = {
 		max_items = 1,
 		items = {
@@ -135,7 +137,7 @@ minetest.register_node("conifers:leaves_special", {
 	tile_images = { "conifers_leaves_special.png" },
 	inventory_image = "conifers_leaves_special.png",
 	paramtype = "light",
-	groups = {snappy=3, leafdecay=3},
+	groups = {snappy=3, leafdecay=3,flammable=2,},
 	drop = {
 		max_items = 1,
 		items = {
@@ -163,10 +165,7 @@ minetest.register_node("conifers:sapling", {
 	wield_image = "conifers_sapling.png",
 	paramtype = "light",
 	walkable = false,
-	groups = {
-		snappy = 2,
-		dig_immediate = 3
-	},
+	groups = {snappy=2,dig_immediate=3,flammable=2},
 	stack_max = 128,
 })
 
