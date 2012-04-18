@@ -1,5 +1,73 @@
 --Colors mod for RTMMP
 
+
+-- Dye table for public funcs
+dye = {}
+
+dye.add_dye_recipe = function(new, first, second) 
+	minetest.register_craft({
+		output = new,
+		recipe = {
+				{first, "dye:" .. second},
+		}
+	})
+
+	minetest.register_craft({
+		output = new,
+		recipe = {
+				{"dye:".. second, "dye:" .. first},
+		}
+	})
+
+	minetest.register_craft({
+		output = new,
+		recipe = {
+				{first},
+				{"dye:".. second},
+		}
+	})
+
+	minetest.register_craft({
+		output = new,
+		recipe = {
+				{"dye:".. second},
+				{first},
+		}
+	})
+
+	minetest.register_craft({
+		output = new,
+		recipe = {
+				{"dye:".. second,""},
+				{"",first},
+		}
+	})
+
+	minetest.register_craft({
+		output = new,
+		recipe = {
+				{first,""},
+				{"","dye:".. second},
+		}
+	})
+
+	minetest.register_craft({
+		output = new,
+		recipe = {
+				{"","dye:".. second},
+				{first,""},
+		}
+	})
+
+	minetest.register_craft({
+		output = new,
+		recipe = {
+				{"",first},
+				{"dye:".. second,""},
+		}
+	})
+end
+
 --Public colors for mods:
 DYE_COLORS = {
 	'white',

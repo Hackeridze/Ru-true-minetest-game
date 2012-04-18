@@ -37,80 +37,17 @@ minetest.register_craft({
 		{'flowers:cotton','flowers:cotton'},
 	}
 })
-
-local addCBrecipe = function(new, first, second) 
-	minetest.register_craft({
-		output = new,
-		recipe = {
-				{first, "dye:" .. second},
-		}
-	})
-
-	minetest.register_craft({
-		output = new,
-		recipe = {
-				{"dye:".. second, "dye:" .. first},
-		}
-	})
-
-	minetest.register_craft({
-		output = new,
-		recipe = {
-				{first},
-				{"dye:".. second},
-		}
-	})
-
-	minetest.register_craft({
-		output = new,
-		recipe = {
-				{"dye:".. second},
-				{first},
-		}
-	})
-
-	minetest.register_craft({
-		output = new,
-		recipe = {
-				{"dye:".. second,""},
-				{"",first},
-		}
-	})
-
-	minetest.register_craft({
-		output = new,
-		recipe = {
-				{first,""},
-				{"","dye:".. second},
-		}
-	})
-
-	minetest.register_craft({
-		output = new,
-		recipe = {
-				{"","dye:".. second},
-				{first,""},
-		}
-	})
-
-	minetest.register_craft({
-		output = new,
-		recipe = {
-				{"",first},
-				{"dye:".. second,""},
-		}
-	})
-end
+ 
 for color, name in pairs(CB_NAMES_COLORS) do
 	minetest.register_node("cotton_blocks:" .. color, {
 		description = name,
-		tile_images = {"cb_" .. color .. ".png"},
-		inventory_image = minetest.inventorycube("cb_" .. color .. ".png"),
+		tile_images = "cb_" .. color .. ".png",
+		inventory_image = "cb_" .. color .. ".png",
 		is_ground_content = true,
 		groups = {snappy=3, cotton=1},
 		sounds = default.node_sound_cotton_defaults(),
 		stack_max = 128,
 	})
-	addCBrecipe("cotton_blocks:" .. color,"cotton_blocks:white",color)
-	addCBrecipe("cotton_blocks:white","cotton_blocks:" .. color,"white")
+	dye.add_dye_recipe("cotton_blocks:" .. color,"cotton_blocks:white",color)
+	dye.add_dye_recipe("cotton_blocks:white","cotton_blocks:" .. color,"white")
 end
