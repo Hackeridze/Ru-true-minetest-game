@@ -1,10 +1,10 @@
 -- Obsidian mod, originally made by <???>
 -- modifed by rtmmp-team
 
-minetest.register_node("obsidian_rtmmp:obsidian_block", {
+minetest.register_node("obsidian:obsidian_block", {
 	description="Obsidian",
-	tile_images = {"obsidian_rtmmp_block.png"},
-	inventory_image = minetest.inventorycube("obsidian_rtmmp_block.png"),
+	tile_images = {"obsidian_block.png"},
+	inventory_image = minetest.inventorycube("obsidian_block.png"),
 	is_ground_content = true,
 	is_ground_content = true,
 	groups = {fastness = 1, level = 3},
@@ -13,7 +13,7 @@ minetest.register_node("obsidian_rtmmp:obsidian_block", {
 		max_items = 1,
 		items = {
 			{
-				 items = {"obsidian_rtmmp:obsidian_block"},
+				 items = {"obsidian:obsidian_block"},
 				 tools = {"default:pick_mese"},
 			}
 		 }
@@ -67,7 +67,7 @@ minetest.register_abm({
 	action = function(pos, node)
 		if find_water(pos) then
 			replace_water(pos)
-			minetest.env:add_node(pos, {name="obsidian_rtmmp:obsidian_block"})
+			minetest.env:add_node(pos, {name="obsidian:obsidian_block"})
 		end
 	end
 })
