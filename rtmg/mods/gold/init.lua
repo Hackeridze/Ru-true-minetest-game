@@ -24,7 +24,7 @@ minetest.register_tool("gold:shovel_gold", {
 })
 minetest.register_tool("gold:axe_gold", {
 	description = "Gold Axe",
-	inventory_image = "gold_tool_steelaxe.png",
+	inventory_image = "gold_tool_goldaxe.png",
 	tool_capabilities = {
 		max_drop_level=3,
 		groupcaps={
@@ -35,7 +35,7 @@ minetest.register_tool("gold:axe_gold", {
 })
 minetest.register_tool("gold:sword_gold", {
 	description = "Gold Sword",
-	inventory_image = "gold_tool_steelsword.png",
+	inventory_image = "gold_tool_goldsword.png",
 	tool_capabilities = {
 		full_punch_interval = 2.0,
 		max_drop_level=3,
