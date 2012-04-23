@@ -43,7 +43,9 @@ local is_node_in_cube = function(nodenames, node_pos, radius)
 	return false
 end
 
-local grow_blocks_on_surfaces = function(growdelay, grownames, surfaces)
+flowers = {}
+
+flowers.grow_blocks_on_surfaces = function(growdelay, grownames, surfaces)
 	for _, surface in ipairs(surfaces) do
 		minetest.register_abm({
 			nodenames = { surface.name },
@@ -167,7 +169,7 @@ minetest.register_craft({
 })
 
 -- Make it grow !
-grow_blocks_on_surfaces(GROWING_DELAY * 2, {
+flowers.grow_blocks_on_surfaces(GROWING_DELAY * 2, {
 	"flowers:flower_rose",
 	"flowers:flower_dandelion_white",
 	"flowers:flower_viola",
@@ -175,20 +177,20 @@ grow_blocks_on_surfaces(GROWING_DELAY * 2, {
 	{name = "dirt_with_grass", chance = 4, spacing = 15},
 })
 
-grow_blocks_on_surfaces(GROWING_DELAY, {
+flowers.grow_blocks_on_surfaces(GROWING_DELAY, {
 	"flowers:flower_dandelion_yellow",
 	"flowers:flower_tulip",
 	}, {
 	{name = "dirt_with_grass", chance = 2, spacing = 10},
 })
 
-grow_blocks_on_surfaces(GROWING_DELAY*3, {
+flowers.grow_blocks_on_surfaces(GROWING_DELAY*3, {
 	"flowers:flower_cotton",
 	}, {
 	{name = "dirt_with_grass", chance = 3, spacing = 12},
 })
 
-grow_blocks_on_surfaces(GROWING_DELAY / 2, {
+flowers.grow_blocks_on_surfaces(GROWING_DELAY / 2, {
 	"flowers:flower_waterlily",
 	}, {
 	{name = "water_source", chance = 1, spacing = 15},
