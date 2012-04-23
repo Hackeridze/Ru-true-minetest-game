@@ -17,11 +17,11 @@ minetest.register_node("grass:grass", {
 	groups = {snappy=3,flammable=2},
 	sounds = default.node_sound_leaves_defaults(),
 	drop = {
-		max_items = 1,
+		max_items = 3,
 		items = {
 			{
 				items = {'wheat:wheat_seeds'},
-				rarity = 1,
+				rarity = 10,
 			},
 		}
 	},
@@ -30,7 +30,7 @@ minetest.register_node("grass:grass", {
 
 minetest.register_abm({
 	nodenames = { "default:dirt_with_grass" },
-	interval = 160,
+	interval = 16000,
 	chance = 50,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		local p_top = {

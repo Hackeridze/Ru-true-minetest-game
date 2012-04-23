@@ -256,25 +256,7 @@ minetest.register_node("wheat:dirt_bed", {
 	dug_item = 'node "default:dirt" 1',
 })
 
-minetest.register_node("wheat:big_grass", {
-	    drawtype = "plantlike",
-	    paramtype = "facedir_simple",
-        tile_images = {"wheat_big_grass.png"},
-	    inventory_image = "wheat_big_grass.png",
-	    paramtype = "light",
-	    is_ground_content = true,
-	    walkable = false,
-        material = minetest.digprop_constanttime(0.1),
-	    furnace_burntime = 2,
-        dug_item = "",
-        extra_dug_item = 'craft "wheat:wheat_seeds" 1',
-        extra_dug_item_rarity = 10,
-        visual_scale = PLANTS_VISUAL_SCALE,
-        selection_box = {
-    		type = "fixed",
-    		fixed = {-1/2, -1/2, -1/2, 1/2, -0.3, 1/2},
-    	},
-})-- Nodes end
+-- Nodes end
 
 -- Craftitems
 minetest.register_craftitem("wheat:wheat_seeds", {
