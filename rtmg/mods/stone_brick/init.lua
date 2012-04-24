@@ -1,6 +1,6 @@
 -- stone bricks
 
-local SB_NAMES_COLORS = {
+SB_NAMES_COLORS = {
 	["white"] = "White stone brick",
 	["light_gray"] = "Light-gray stone brick",
 	["gray"] = "Gray stone brick",
