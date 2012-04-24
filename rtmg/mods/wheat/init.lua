@@ -218,10 +218,9 @@ minetest.register_craftitem("wheat:wheat_seeds", {
 			n = minetest.env:get_node(pointed_thing.under)
 			if n.name == "wheat:dirt_bed" then
 				minetest.env:add_node(pointed_thing.above, {name="wheat:wheat_1"})
-			end
 			return ""
+			end
 		end
-		return nil
 	end,
 	stack_max = 128,
 }) -- Craftitems end
