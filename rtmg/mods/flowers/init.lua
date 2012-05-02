@@ -195,3 +195,9 @@ flowers.grow_blocks_on_surfaces(GROWING_DELAY / 2, {
 	}, {
 	{name = "water_source", chance = 1, spacing = 15},
 })
+
+flowers.grow_blocks_on_surfaces(GROWING_DELAY * 3{
+	"fdefault:dirt_with_grass",
+	}, {
+	{name = "dirt_with_grass", chance = 40, spacing = 0},
+})
